@@ -1,0 +1,18 @@
+If a file called twicelib.lua is present in the current
+folder then all it takes to load the file while opening
+the interpreter is either of these 2 things :
+
+lua -i -ltwicelib
+
+OR
+
+lua -i
+>dofile('twicelib.lua)
+
+If the function being accessed is called twice, then it
+can be executed in both interpreters simply by
+executing:
+
+>twice(2)
+4
+>
