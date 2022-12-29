@@ -1,15 +1,15 @@
--- coroutine example : producer consumer
--- function producer calls the consumer with data
-function producer()
-	for i = 1,10 do
-		print(i)
-	end
-end
--- function consumer prints the data
-function consumer()
+function coroutine_test()
 	print(1)
-	coroutine.yield()
+	coroutine.yield(1)
 	print(2)
+	coroutine.yield(2)
 end
-co = coroutine.create(consumer)
-coroutine.resume(co)
+
+cor = coroutine.create(coroutine_test)
+
+status, val = coroutine.resume(cor)
+print(status, val)
+status, val = coroutine.resume(cor)
+print(status, val)
+status, val = coroutine.resume(cor)
+print(status, val)
