@@ -1,15 +1,15 @@
-function coroutine_test()
-	print(1)
-	coroutine.yield(1)
-	print(2)
-	coroutine.yield(2)
+function prod_func()
+	for i = 1,10 do
+		coroutine.yield(2 * i)
+	end
 end
 
-cor = coroutine.create(coroutine_test)
+function consumer(producer)
+	for i = 1, 10 do
+		status, x = coroutine.resume(producer)
+		print(x)
+	end
+end
 
-status, val = coroutine.resume(cor)
-print(status, val)
-status, val = coroutine.resume(cor)
-print(status, val)
-status, val = coroutine.resume(cor)
-print(status, val)
+producer = coroutine.create(prod_func)
+consumer(producer)
